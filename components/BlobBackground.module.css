@@ -13,15 +13,19 @@
 
 .circle {
   position: absolute;
-  border-radius: 50%;
-  background: var(--color-accent);
-  opacity: 0.5;
-  filter: blur(60px);
-  will-change: transform;
+  opacity: 0.75;
+  filter: blur(52px);
+  /* Radial gradient gives each blob a bright highlight + depth, like a lava lamp bubble */
+  background: radial-gradient(
+    circle at 38% 32%,
+    rgba(255, 255, 255, 0.35) 0%,
+    var(--color-accent) 38%,
+    transparent 78%
+  );
+  will-change: transform, border-radius;
 }
 
-/* Five distinct animation variants — different paths, speeds, and scales
-   so blobs never feel like they're on the same timer */
+/* Five variants — unique shape morph paths + different speeds so they never sync */
 .varA { animation: blob-a  8s ease-in-out infinite; }
 .varB { animation: blob-b 11s ease-in-out infinite; }
 .varC { animation: blob-c  7s ease-in-out infinite; }
@@ -29,33 +33,84 @@
 .varE { animation: blob-e  9s ease-in-out infinite; }
 
 @keyframes blob-a {
-  0%, 100% { transform: scale(1)    translate(0px,   0px);  }
-  25%       { transform: scale(1.1)  translate(16px, -22px); }
-  50%       { transform: scale(0.94) translate(-10px, 14px); }
-  75%       { transform: scale(1.07) translate(12px,  10px); }
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    border-radius: 60% 40% 55% 45% / 50% 65% 35% 50%;
+  }
+  25% {
+    transform: scale(1.1) translate(16px, -22px);
+    border-radius: 40% 60% 45% 55% / 65% 35% 65% 35%;
+  }
+  50% {
+    transform: scale(0.94) translate(-10px, 14px);
+    border-radius: 70% 30% 40% 60% / 40% 70% 30% 60%;
+  }
+  75% {
+    transform: scale(1.07) translate(12px, 10px);
+    border-radius: 45% 55% 70% 30% / 60% 40% 55% 45%;
+  }
 }
 
 @keyframes blob-b {
-  0%, 100% { transform: scale(1)    translate(0px,   0px);  }
-  33%       { transform: scale(0.9)  translate(-22px, 12px); }
-  66%       { transform: scale(1.12) translate(20px, -16px); }
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    border-radius: 40% 60% 70% 30% / 55% 40% 60% 45%;
+  }
+  33% {
+    transform: scale(0.9) translate(-22px, 12px);
+    border-radius: 65% 35% 45% 55% / 35% 65% 40% 60%;
+  }
+  66% {
+    transform: scale(1.12) translate(20px, -16px);
+    border-radius: 30% 70% 55% 45% / 60% 30% 70% 40%;
+  }
 }
 
 @keyframes blob-c {
-  0%, 100% { transform: scale(1)    translate(0px,   0px);  }
-  20%       { transform: scale(1.15) translate(8px,  -26px); }
-  60%       { transform: scale(0.88) translate(-14px, 20px); }
-  80%       { transform: scale(1.05) translate(16px,   6px); }
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    border-radius: 55% 45% 40% 60% / 65% 35% 55% 45%;
+  }
+  20% {
+    transform: scale(1.15) translate(8px, -26px);
+    border-radius: 35% 65% 60% 40% / 45% 60% 35% 65%;
+  }
+  60% {
+    transform: scale(0.88) translate(-14px, 20px);
+    border-radius: 70% 30% 45% 55% / 30% 70% 60% 40%;
+  }
+  80% {
+    transform: scale(1.05) translate(16px, 6px);
+    border-radius: 45% 55% 30% 70% / 55% 45% 70% 30%;
+  }
 }
 
 @keyframes blob-d {
-  0%, 100% { transform: scale(1)    translate(0px,   0px);  }
-  40%       { transform: scale(1.18) translate(-16px, -12px); }
-  70%       { transform: scale(0.92) translate(10px,  18px);  }
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    border-radius: 30% 70% 60% 40% / 50% 55% 45% 50%;
+  }
+  40% {
+    transform: scale(1.18) translate(-16px, -12px);
+    border-radius: 60% 40% 35% 65% / 65% 30% 70% 35%;
+  }
+  70% {
+    transform: scale(0.92) translate(10px, 18px);
+    border-radius: 50% 50% 65% 35% / 40% 65% 35% 60%;
+  }
 }
 
 @keyframes blob-e {
-  0%, 100% { transform: scale(1)    translate(0px,   0px);  }
-  30%       { transform: scale(0.93) translate(22px,  16px); }
-  70%       { transform: scale(1.1)  translate(-12px, -22px); }
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    border-radius: 65% 35% 50% 50% / 40% 60% 40% 60%;
+  }
+  30% {
+    transform: scale(0.93) translate(22px, 16px);
+    border-radius: 35% 65% 30% 70% / 60% 35% 65% 35%;
+  }
+  70% {
+    transform: scale(1.1) translate(-12px, -22px);
+    border-radius: 50% 50% 65% 35% / 55% 45% 35% 65%;
+  }
 }
