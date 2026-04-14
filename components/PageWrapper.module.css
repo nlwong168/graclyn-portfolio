@@ -1,0 +1,6 @@
+.wrapper {
+  position: relative;
+  z-index: 1;
+  padding-top: 80px; /* nav height */
+  min-height: 100vh;
+}
