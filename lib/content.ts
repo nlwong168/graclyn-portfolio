@@ -1,4 +1,15 @@
-export const siteContent = {
+export type SiteContent = {
+  name: string
+  role: string
+  tagline: string
+  bio: string[]
+  services: string[]
+  marqueeItems: string[]
+  contact: { email: string; linkedin: string; behance: string }
+  bioPhoto: string
+}
+
+export const siteContent: SiteContent = {
   name: 'Graclyn',
   role: 'Graphic Designer',
   tagline: 'Crafting visual identities and brand experiences that feel alive.',
@@ -13,5 +24,5 @@ export const siteContent = {
     linkedin: '',
     behance: '',
   },
-  bio_photo: '', // Set to '/images/graclyn.jpg' when ready; empty = no photo rendered
+  bioPhoto: '', // Set to '/images/graclyn.jpg' when ready; empty = no photo rendered
 }

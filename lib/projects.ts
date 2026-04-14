@@ -89,11 +89,12 @@ export function getProjectBySlug(slug: string): Project | undefined {
 
 export function getAllCategories(): string[] {
   const cats = projects.flatMap(p => p.category)
-  return [...new Set(cats)]
+  return Array.from(new Set(cats)).sort()
 }
 
 export function getAdjacentProjects(slug: string): { prev: Project | null; next: Project | null } {
   const index = projects.findIndex(p => p.slug === slug)
+  if (index === -1) return { prev: null, next: null }
   return {
     prev: index > 0 ? projects[index - 1] : null,
     next: index < projects.length - 1 ? projects[index + 1] : null,

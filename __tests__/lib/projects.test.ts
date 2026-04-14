@@ -33,6 +33,12 @@ describe('getAllCategories', () => {
     expect(cats.length).toBeGreaterThan(0)
     expect(new Set(cats).size).toBe(cats.length) // no duplicates
   })
+
+  it('returns sorted results', () => {
+    const cats = getAllCategories()
+    const sorted = [...cats].sort()
+    expect(cats).toEqual(sorted)
+  })
 })
 
 describe('getAdjacentProjects', () => {
@@ -53,5 +59,11 @@ describe('getAdjacentProjects', () => {
     const projects = getAllProjects()
     const last = projects[projects.length - 1]
     expect(getAdjacentProjects(last.slug).next).toBeNull()
+  })
+
+  it('returns null prev and next for unknown slug', () => {
+    const { prev, next } = getAdjacentProjects('unknown-slug')
+    expect(prev).toBeNull()
+    expect(next).toBeNull()
   })
 })
