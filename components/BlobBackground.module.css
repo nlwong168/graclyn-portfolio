@@ -6,23 +6,17 @@
   overflow: hidden;
 }
 
-.filter {
-  position: absolute;
-  width: 0;
-  height: 0;
-}
-
 .container {
   position: absolute;
   inset: 0;
-  filter: url(#blob-goo);
 }
 
 .circle {
   position: absolute;
   border-radius: 50%;
   background: var(--color-accent);
-  opacity: 0.75;
+  opacity: 0.5;
+  filter: blur(60px);
   will-change: transform;
 }
 
