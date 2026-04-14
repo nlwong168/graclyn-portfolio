@@ -15,7 +15,7 @@ export default function ContactPage() {
         <header className={styles.header}>
           <p className={styles.label}>Contact</p>
           <h1 className={styles.title}>Get in Touch</h1>
-          <p className={styles.prompt}>Have a project in mind? Send a message and I'll get back to you.</p>
+          <p className={styles.prompt}>Have a project in mind? Send a message and I&apos;ll get back to you.</p>
         </header>
 
         <form

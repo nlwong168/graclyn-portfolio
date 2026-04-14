@@ -21,8 +21,8 @@ export default function AboutPage() {
 
         <div className={styles.bio}>
           <div className={styles.photo}>
-            {siteContent.bio_photo ? (
-              <Image src={siteContent.bio_photo} alt={siteContent.name} fill sizes="300px" />
+            {siteContent.bioPhoto ? (
+              <Image src={siteContent.bioPhoto} alt={siteContent.name} fill sizes="300px" />
             ) : (
               <div className={styles.photoPlaceholder}>Photo</div>
             )}
