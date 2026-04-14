@@ -19,7 +19,7 @@
   top: 50%; left: 1.2rem;
   transform: translateY(-50%);
   font-size: 0.9rem; font-weight: 600;
-  color: var(--color-text); opacity: 0.5;
+  color: var(--color-text); opacity: 0.45;
   pointer-events: none;
   transition: transform 0.2s var(--easing), font-size 0.2s, opacity 0.2s, color 0.2s;
 }
@@ -41,19 +41,22 @@
 .field input,
 .field textarea {
   width: 100%;
-  background: var(--color-text);
-  color: var(--color-bg);
-  border: none;
+  background: var(--color-accent-subtle);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border);
   border-radius: 0 22px 22px;
   padding: 1rem 1.2rem;
   font-family: var(--font);
   font-size: 0.95rem;
   font-weight: 500;
   outline: none;
-  transition: box-shadow var(--transition-mouse);
+  transition: border-color var(--transition-mouse), box-shadow var(--transition-mouse);
 }
 .field input:focus,
-.field textarea:focus { box-shadow: 0 0 0 2px var(--color-accent); }
+.field textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-subtle);
+}
 .field textarea { min-height: 140px; resize: vertical; border-radius: 0 22px 22px; }
 
 .submit {

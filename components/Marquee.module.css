@@ -14,5 +14,11 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  will-change: transform;
+}
+
+@keyframes x-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 .sep { margin: 0 1.2rem; opacity: 0.6; }

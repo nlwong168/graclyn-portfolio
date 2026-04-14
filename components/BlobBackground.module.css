@@ -22,6 +22,13 @@
   position: absolute;
   border-radius: 50%;
   background: var(--color-accent);
-  opacity: 0.3;
+  opacity: 0.75;
   animation: blob-breathe 6s var(--easing) infinite;
+  will-change: transform;
+}
+
+@keyframes blob-breathe {
+  0%,  100% { transform: scale(1)    translate(0px, 0px); }
+  33%        { transform: scale(1.14) translate(12px, -18px); }
+  66%        { transform: scale(0.88) translate(-10px, 14px); }
 }
