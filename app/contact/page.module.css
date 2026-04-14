@@ -1,0 +1,78 @@
+.page { padding: 80px var(--pad-h) 80px; max-width: 800px; margin: 0 auto; }
+
+.header { margin-bottom: 3rem; }
+.label {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.75rem;
+}
+.title {
+  font-size: clamp(2rem, 5vw, 3rem); font-weight: 800;
+  letter-spacing: -0.03em; color: var(--color-text); margin-bottom: 0.75rem;
+}
+.prompt { font-size: 1rem; color: var(--color-text); opacity: 0.6; line-height: 1.6; }
+
+.form { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3rem; }
+
+.field { position: relative; }
+.field label {
+  position: absolute;
+  top: 50%; left: 1.2rem;
+  transform: translateY(-50%);
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--color-text); opacity: 0.5;
+  pointer-events: none;
+  transition: transform 0.2s var(--easing), font-size 0.2s, opacity 0.2s, color 0.2s;
+}
+.field.textarea label { top: 1.2rem; transform: none; }
+.field input:focus ~ label,
+.field input:not(:placeholder-shown) ~ label,
+.field textarea:focus ~ label,
+.field textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-180%) translateX(-0.6rem);
+  font-size: 0.7rem;
+  opacity: 1;
+  color: var(--color-accent);
+}
+.field.textarea textarea:focus ~ label,
+.field.textarea textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-1.6rem) translateX(-0.6rem);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 0 22px 22px;
+  padding: 1rem 1.2rem;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 500;
+  outline: none;
+  transition: box-shadow var(--transition-mouse);
+}
+.field input:focus,
+.field textarea:focus { box-shadow: 0 0 0 2px var(--color-accent); }
+.field textarea { min-height: 140px; resize: vertical; border-radius: 0 22px 22px; }
+
+.submit {
+  align-self: flex-start;
+  background: var(--color-accent); color: #fff;
+  padding: 0.8rem 2.2rem; border-radius: 64px;
+  font-size: 0.9rem; font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-mouse), box-shadow var(--transition-mouse);
+  cursor: pointer; border: none; font-family: var(--font);
+}
+.submit:hover { transform: rotate(180deg) translateY(-2px); box-shadow: var(--shadow-lg); }
+
+.socials { display: flex; gap: 1rem; flex-wrap: wrap; }
+.socialLink {
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--color-accent);
+  padding: 6px 16px; border-radius: 64px;
+  background: var(--color-accent-subtle);
+  transition: opacity var(--transition-mouse);
+}
+.socialLink:hover { opacity: 0.7; }
