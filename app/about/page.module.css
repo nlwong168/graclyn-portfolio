@@ -1,0 +1,63 @@
+.page { padding: 80px var(--pad-h) 80px; max-width: var(--max-width); margin: 0 auto; }
+
+.header { margin-bottom: 3rem; }
+.label {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.75rem;
+}
+.title {
+  font-size: clamp(2rem, 5vw, 3rem); font-weight: 800;
+  letter-spacing: -0.03em; color: var(--color-text);
+}
+
+.bio {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 4rem;
+  align-items: start;
+  margin-bottom: 4rem;
+}
+
+.photo {
+  aspect-ratio: 3/4;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--color-accent-subtle);
+  position: relative;
+}
+
+.photoPlaceholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; opacity: 0.4; color: var(--color-text);
+}
+
+.bioText p { font-size: 1rem; line-height: 1.8; color: var(--color-text); opacity: 0.75; margin-bottom: 1.2rem; }
+
+.servicesSection { margin-bottom: 3rem; }
+.servicesLabel {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--color-accent); margin-bottom: 1rem;
+}
+.services { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.service {
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-accent-subtle);
+  padding: 6px 16px; border-radius: 64px;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--color-accent); color: #fff;
+  padding: 0.75rem 2rem; border-radius: 64px;
+  font-size: 0.9rem; font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-mouse);
+}
+.cta:hover { transform: translateY(-2px); }
+
+@media (max-width: 800px) {
+  .bio { grid-template-columns: 1fr; gap: 2rem; }
+  .photo { max-width: 280px; }
+}
