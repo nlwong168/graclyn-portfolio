@@ -1,0 +1,27 @@
+.root {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.container {
+  position: absolute;
+  inset: 0;
+  filter: url(#blob-goo);
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.3;
+  animation: blob-breathe 6s var(--easing) infinite;
+}
