@@ -3,8 +3,8 @@ import { createContext, useContext, useState } from 'react'
 
 export type BlobCircle = {
   size: number    // px
-  top: number     // % from top
-  left: number    // % from left
+  top: number     // % from top of viewport
+  left: number    // % from left of viewport
   delay: number   // animation-delay in seconds
 }
 
@@ -15,30 +15,38 @@ type BlobContextValue = {
 
 const BlobContext = createContext<BlobContextValue>({ circles: [], setConfig: () => {} })
 
-// Default configs per page — imported and used by each page's BlobConfigSetter
 export const BLOB_CONFIGS = {
   home: [
-    { size: 320, top: -8,  left: -6,  delay: 0   },
-    { size: 220, top: 4,   left: 18,  delay: 1.2 },
-    { size: 180, top: -4,  left: 38,  delay: 2.5 },
-    { size: 140, top: 18,  left: 52,  delay: 0.8 },
-    { size: 100, top: 12,  left: 70,  delay: 1.8 },
+    { size: 360, top: 2,  left: 18, delay: 0   },
+    { size: 290, top: 12, left: 44, delay: 1.3 },
+    { size: 240, top: 0,  left: 64, delay: 3.1 },
+    { size: 190, top: 28, left: 30, delay: 0.7 },
+    { size: 160, top: 24, left: 56, delay: 2.4 },
+    { size: 130, top: 8,  left: 8,  delay: 4.2 },
+    { size: 110, top: 34, left: 72, delay: 1.8 },
   ],
   work: [
-    { size: 260, top: -6,  left: -4,  delay: 0   },
-    { size: 200, top: 2,   left: 22,  delay: 1.5 },
-    { size: 160, top: -2,  left: 44,  delay: 2.8 },
-    { size: 120, top: 14,  left: 64,  delay: 0.5 },
+    { size: 320, top: 4,  left: 14, delay: 0   },
+    { size: 260, top: 10, left: 40, delay: 1.6 },
+    { size: 210, top: 2,  left: 62, delay: 3.2 },
+    { size: 170, top: 24, left: 26, delay: 0.6 },
+    { size: 140, top: 22, left: 52, delay: 2.1 },
+    { size: 110, top: 18, left: 74, delay: 1.1 },
   ],
   about: [
-    { size: 280, top: 10,  left: 30,  delay: 0   },
-    { size: 200, top: -4,  left: 52,  delay: 1.2 },
-    { size: 150, top: 20,  left: 14,  delay: 2.0 },
+    { size: 310, top: 8,  left: 22, delay: 0   },
+    { size: 250, top: 4,  left: 50, delay: 1.5 },
+    { size: 200, top: 20, left: 36, delay: 2.8 },
+    { size: 160, top: 26, left: 62, delay: 0.9 },
+    { size: 130, top: 14, left: 10, delay: 3.4 },
+    { size: 110, top: 30, left: 72, delay: 1.7 },
   ],
   contact: [
-    { size: 220, top: 30,  left: 50,  delay: 0   },
-    { size: 160, top: 50,  left: 68,  delay: 1.4 },
-    { size: 100, top: 42,  left: 36,  delay: 0.7 },
+    { size: 280, top: 12, left: 32, delay: 0   },
+    { size: 220, top: 6,  left: 56, delay: 1.6 },
+    { size: 180, top: 26, left: 20, delay: 2.8 },
+    { size: 150, top: 28, left: 54, delay: 0.9 },
+    { size: 120, top: 18, left: 72, delay: 1.9 },
   ],
 }
 
