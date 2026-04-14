@@ -1,95 +1,45 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+import { useEffect } from 'react'
+import Link from 'next/link'
+import { useBlobConfig, BLOB_CONFIGS } from '@/context/BlobContext'
+import { getAllProjects } from '@/lib/projects'
+import { siteContent } from '@/lib/content'
+import PageWrapper from '@/components/PageWrapper'
+import Marquee from '@/components/Marquee'
+import ProjectCard from '@/components/ProjectCard'
+import styles from './page.module.css'
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const { setConfig } = useBlobConfig()
+  useEffect(() => { setConfig(BLOB_CONFIGS.home) }, [setConfig])
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  const previewProjects = getAllProjects().slice(0, 3)
+
+  return (
+    <PageWrapper>
+      <section className={styles.hero}>
+        <p className={styles.label}>{siteContent.role}</p>
+        <h1 className={styles.name}>{siteContent.name}.</h1>
+        <p className={styles.tagline}>{siteContent.tagline}</p>
+        <div className={styles.buttons}>
+          <Link href="/work" className={styles.btnPrimary}>View Work</Link>
+          <Link href="/about" className={styles.btnSecondary}>About Me</Link>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+
+      <Marquee items={siteContent.marqueeItems} />
+
+      <section className={styles.workSection}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionTitle}>Selected Work</span>
+          <Link href="/work" className={styles.sectionLink}>View all →</Link>
+        </div>
+        <div className={styles.grid}>
+          {previewProjects.map(p => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
+        </div>
+      </section>
+    </PageWrapper>
+  )
 }
